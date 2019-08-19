@@ -1,0 +1,9 @@
+C:\Workspace\Source\KLove\Data\bin\Debug\netstandard2.0\Data.deps.json
+C:\Workspace\Source\KLove\Data\bin\Debug\netstandard2.0\Data.dll
+C:\Workspace\Source\KLove\Data\obj\Debug\netstandard2.0\Data.csprojAssemblyReference.cache
+C:\Workspace\Source\KLove\Data\obj\Debug\netstandard2.0\Data.csproj.CoreCompileInputs.cache
+C:\Workspace\Source\KLove\Data\obj\Debug\netstandard2.0\Data.AssemblyInfoInputs.cache
+C:\Workspace\Source\KLove\Data\obj\Debug\netstandard2.0\Data.AssemblyInfo.cs
+C:\Workspace\Source\KLove\Data\bin\Debug\netstandard2.0\Data.pdb
+C:\Workspace\Source\KLove\Data\obj\Debug\netstandard2.0\Data.dll
+C:\Workspace\Source\KLove\Data\obj\Debug\netstandard2.0\Data.pdb

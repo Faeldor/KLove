@@ -1,0 +1,85 @@
+﻿@model IndexModel
+@{
+	ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+	<div class="col-md-6">
+		<h2>Departments</h2>
+		<p><small><i>Click row to edit Department</i></small></p>
+		@(Html
+			  .Grid(Model.Departments)
+			  .Build(columns =>
+			  {
+				  columns.Add(model => model.Id).Hidden();
+				  columns.Add(model => model.Name).Titled("Name");
+				  columns.Add(model => model.Active).Titled("Active");
+			  })
+			  .Empty("No data found")
+			  .Filterable()
+			  .Sortable()
+			  .Pageable()
+			  .Id("department-grid")
+			  )
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-2">
+		<input id="createDepartment" value="Create Department" class="btn btn-primary" />
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-9">
+		<h2>Employees</h2>
+		<p><small><i>Click row to edit Employee</i></small></p>
+		@(Html
+			  .Grid(Model.Employees)
+			  .Build(columns =>
+			  {
+				  columns.Add(model => model.Id).Hidden();
+				  columns.Add(model => model.FirstName).Titled("First Name");
+				  columns.Add(model => model.LastName).Titled("Last Name");
+				  columns.Add(model => model.StreetAddress).Titled("Street Address");
+				  columns.Add(model => model.City).Titled("City");
+				  columns.Add(model => model.State).Titled("State");
+				  columns.Add(model => model.EmailAddress).Titled("Email Address");
+				  columns.Add(model => model.PhoneNumber).Titled("PhoneNumber");
+			  })
+			  .Empty("No data found")
+			  .Filterable()
+			  .Sortable()
+			  .Pageable()
+			  .Id("employee-grid")
+			  )
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-2">
+		<input id="createEmployee" value="Create Employee" class="btn btn-primary"/>
+	</div>
+</div>
+
+<script>
+	document.getElementById("department-grid").addEventListener('rowclick', function (e) {
+		var url = '@Url.Action("Edit", "Department", new { departmentId = "__id__" })';
+		window.location.href = url.replace('__id__', e.detail.data.id);
+	});
+
+	document.getElementById("employee-grid").addEventListener('rowclick', function (e) {
+		var url = '@Url.Action("Edit", "Employee", new { employeeId = "__id__" })';
+		window.location.href = url.replace('__id__', e.detail.data.id);
+	});
+
+	document.getElementById("createDepartment").addEventListener('click', function (e) {
+		var url = '@Url.Action("Edit", "Department")';
+		window.location.href = url;
+	});
+
+	document.getElementById("createEmployee").addEventListener('click', function (e) {
+		var url = '@Url.Action("Edit", "Employee")';
+		window.location.href = url;
+	});
+</script>

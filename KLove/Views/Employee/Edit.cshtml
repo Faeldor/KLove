@@ -1,0 +1,94 @@
+﻿@using Data.Models
+@using Microsoft.AspNetCore.Mvc.Internal
+@model Data.Models.Employee
+@{
+	ViewData["Title"] = "Create/Edit";
+}
+
+<h2>Create / Edit Employee</h2>
+
+@using (Html.BeginForm("Save", "Employee", FormMethod.Post))
+{
+	@Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+	<hr />
+	<input type="hidden" value="@Model.Id" name="Id" />
+	<input type="hidden" value="@Model.Created" name="Created" />
+	<input type="hidden" value="@Model.CreatedBy" name="CreatedBy" />
+
+	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+	<div class="form-group">
+		@Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-6">
+			@Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-6">
+			@Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.StreetAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-6">
+			@Html.EditorFor(model => model.StreetAddress, new { htmlAttributes = new { @class = "form-control" } })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-6">
+			@Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-6">
+			@Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.EmailAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-6">
+			@Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-6">
+			@Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { placeholder = "### - ### - ####", @class = "form-control" } })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.Department, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-6">
+			@Html.DropDownListFor(model => model.DepartmentId, (SelectList)ViewBag.Departments, null, new { htmlAttributes = new { @class = "form-control" } })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.Active, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-1">
+			@Html.EditorFor(model => model.Active, new { htmlAttributes = new { @class = "form-control" } })
+		</div>
+	</div>
+	<br />
+
+	<div class="form-group">
+		<div class="col-md-2">
+			<input type="submit" value="Save" class="btn btn-primary" />
+		</div>
+		<div class="col-md-1">
+			<input value="Delete" class="btn btn-danger" onclick="location.href = '@Url.Action("Delete", "Employee", new { employeeId = Model.Id })'" />
+		</div>
+	</div>
+</div>
+}
